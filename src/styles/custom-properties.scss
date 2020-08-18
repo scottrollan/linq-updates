@@ -1,0 +1,29 @@
+:root {
+  /* COlORS */
+  --white: #ffffff;
+  --light-gray: #c3c3c3;
+  --dark-gray: #3f3f3f;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --white-overlay: rgba(255, 255, 255, 0.2);
+  --linq-green: #8ebb54;
+  --black: #000000;
+  /* MEASUREMENTS */
+  --small-window: 800px;
+  --medium-window: 967px;
+  --large-window: 1200px;
+}
+
+@mixin lightButton {
+  text-decoration: none;
+  background-color: var(--light-gray);
+  color: var(--black);
+  font-size: x-large;
+  padding: 1rem 2rem;
+  border: 2px solid var(--dark-gray);
+  border-radius: 2rem;
+  &:hover {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    transition: all 0.3s ease-in-out;
+  }
+}

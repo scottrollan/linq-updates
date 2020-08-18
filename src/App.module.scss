@@ -1,0 +1,43 @@
+@import './styles/custom-properties.scss';
+
+html {
+  overflow-x: hidden;
+}
+.App {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #282c34;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  text-align: center;
+}
+.App h2,
+.App h3 {
+  margin: 1rem 140px;
+}
+.logo {
+  height: 10vh;
+  pointer-events: none;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: App-logo-spin infinite 15s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

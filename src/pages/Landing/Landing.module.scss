@@ -1,0 +1,25 @@
+@import '../../styles/custom-properties.scss';
+
+.landing {
+  padding: 2rem 0.5rem;
+  margin: 2rem 0;
+  width: 90%;
+  max-width: var(--medium-window);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--linq-green);
+  border-radius: 1rem;
+}
+.buttonDiv {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: 967px) {
+    flex-direction: column;
+  }
+}
+
+.navButton {
+  @include lightButton;
+  margin: 1rem 0;
+}
