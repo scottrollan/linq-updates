@@ -12,7 +12,10 @@
   margin: var(--side-margin);
   padding: 1rem 0;
 }
-
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: var(--linq-green);
+}
 .mainInputArea {
   height: auto;
   // min-height: 100rem;
