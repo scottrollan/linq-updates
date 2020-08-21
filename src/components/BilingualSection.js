@@ -4,6 +4,7 @@ import { Form } from 'react-bootstrap';
 import styles from '../pages/Events/Events.module.scss';
 
 const BilingualSection = ({
+  id,
   title,
   titleEsp,
   subtitle,
@@ -22,12 +23,12 @@ const BilingualSection = ({
   const [thisInfo, setThisInfo] = useState(info);
   const [thisInfoEsp, setThisInfoEsp] = useState(infoEsp);
 
-  const change = (e) => {
-    const id = e.target.id;
-    const value = e.target.value;
-    console.log('id: ', id, 'value: ', value);
-    `${id}`(value);
-  };
+  // const change = (e) => {
+  //   const id = e.target.id;
+  //   const value = e.target.value;
+  //   console.log('id: ', id, 'value: ', value);
+  //   `${id}`(value);
+  // };
   return (
     <div className={styles.bilingual}>
       <div className={styles.oneLine}>
@@ -60,6 +61,7 @@ const BilingualSection = ({
           <Form.Control
             type="text"
             onChange={(e) => setThisTitle(e.target.value)}
+            id={`title${id}`}
             value={thisTitle}
           ></Form.Control>
         </Form.Group>
@@ -68,6 +70,7 @@ const BilingualSection = ({
           <Form.Control
             type="text"
             onChange={(e) => setThisTitleEsp(e.target.value)}
+            id={`titleEsp${id}`}
             value={thisTitleEsp}
           ></Form.Control>
         </Form.Group>
@@ -78,6 +81,7 @@ const BilingualSection = ({
           <Form.Control
             type="text"
             onChange={(e) => setThisSubtitle(e.target.value)}
+            id={`subtitle${id}`}
             value={thisSubtitle}
           ></Form.Control>
         </Form.Group>
@@ -86,6 +90,7 @@ const BilingualSection = ({
           <Form.Control
             type="text"
             onChange={(e) => setThisSubtitleEsp(e.target.value)}
+            id={`subtitleEsp${id}`}
             value={thisSubtitleEsp}
           ></Form.Control>
         </Form.Group>
@@ -97,6 +102,7 @@ const BilingualSection = ({
             as="textarea"
             rows={8}
             onChange={(e) => setThisDescription(e.target.value)}
+            id={`description${id}`}
             value={thisDescription}
           ></Form.Control>
         </Form.Group>
@@ -106,6 +112,7 @@ const BilingualSection = ({
             as="textarea"
             rows={8}
             onChange={(e) => setThisDescriptionEsp(e.target.value)}
+            id={`descriptionEsp${id}`}
             value={thisDescriptionEsp}
           ></Form.Control>
         </Form.Group>
@@ -117,6 +124,7 @@ const BilingualSection = ({
           <Form.Control
             type="text"
             onChange={(e) => setThisInfo(e.target.value)}
+            id={`info${id}`}
             value={thisInfo}
           ></Form.Control>
         </Form.Group>
@@ -126,6 +134,7 @@ const BilingualSection = ({
           <Form.Control
             type="text"
             onChange={(e) => setThisInfoEsp(e.target.value)}
+            id={`infoEsp${id}`}
             value={thisInfoEsp}
           ></Form.Control>
         </Form.Group>

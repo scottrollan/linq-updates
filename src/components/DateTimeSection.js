@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import styles from '../pages/Events/Events.module.scss';
 
-const DateTimeSection = ({ start, end }) => {
+const DateTimeSection = ({ id, start, end }) => {
   const renderDate = (dateInput) => {
     const d = new Date(dateInput);
     const dNum = d.getDate().toString();
@@ -58,6 +58,7 @@ const DateTimeSection = ({ start, end }) => {
           <Form.Control
             type="date"
             onChange={(e) => setThisStartDate(e.target.value)}
+            id={`startDate${id}`}
             value={thisStartDate}
           ></Form.Control>
         </Form.Group>
@@ -66,6 +67,7 @@ const DateTimeSection = ({ start, end }) => {
           <Form.Control
             type="time"
             onChange={(e) => setThisStartTime(e.target.value)}
+            id={`startTime${id}`}
             value={thisStartTime}
           ></Form.Control>
         </Form.Group>
@@ -76,14 +78,16 @@ const DateTimeSection = ({ start, end }) => {
           <Form.Control
             type="date"
             onChange={(e) => setThisEndDate(e.target.value)}
+            id={`endDate${id}`}
             value={thisEndDate}
           ></Form.Control>
         </Form.Group>
         <Form.Group className={styles.formGroup}>
-          <Form.Label>and Time</Form.Label>
+          <Form.Label>End Time</Form.Label>
           <Form.Control
             type="time"
             onChange={(e) => setThisEndTime(e.target.value)}
+            id={`endTime${id}`}
             value={thisEndTime}
           ></Form.Control>
         </Form.Group>

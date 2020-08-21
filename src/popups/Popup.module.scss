@@ -1,0 +1,25 @@
+@import '../styles/custom-properties.scss';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--overlay);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.whiteSpace {
+  background-color: #fff;
+  text-align: center;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  color: var(--black);
+}

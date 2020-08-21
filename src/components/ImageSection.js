@@ -6,12 +6,13 @@ import styles from '../pages/Events/Events.module.scss';
 
 const ImageSection = ({
   id,
+  image,
   initialUrl,
   selectedFile,
   fileSelectHandler,
-  fileUploadHandler,
 }) => {
   const [photoLink, setPhotoLink] = useState(initialUrl);
+  const [thisImageRef, setThisImageRef] = useState(image.asset._ref);
 
   const fileSelect = (e) => {
     const thisFile = e.target.files[0];
@@ -23,7 +24,8 @@ const ImageSection = ({
   const fileUpload = async () => {
     let imageRes = await Client.assets.upload('image', selectedFile);
     setPhotoLink(imageRes.url);
-    fileUploadHandler(imageRes.url);
+    const newImageRef = imageRes._id;
+    setThisImageRef(newImageRef);
   };
 
   return (
@@ -43,12 +45,13 @@ const ImageSection = ({
           name="file"
           label="Upload New Image"
           onChange={(e) => fileSelect(e)}
-          button={`${id}Button`}
+          button={`image${id}`}
           feedbackTooltip
         />
         <Button
           style={{ display: 'none' }}
-          id={`${id}Button`}
+          id={`image${id}`}
+          value={thisImageRef}
           onClick={fileUpload}
         >
           Upload Photo
