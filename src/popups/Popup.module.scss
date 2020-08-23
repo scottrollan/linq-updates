@@ -7,10 +7,14 @@
   width: 100vw;
   height: 100vh;
   background-color: var(--overlay);
-  z-index: 2;
+  z-index: 990;
   justify-content: center;
   align-items: center;
   display: none;
+}
+
+.overlay > * {
+  z-index: 991;
 }
 
 .whiteSpace {
@@ -22,4 +26,5 @@
   justify-content: space-between;
   border-radius: 1rem;
   color: var(--black);
+  z-index: 992;
 }

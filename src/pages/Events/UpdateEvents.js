@@ -16,6 +16,7 @@ const UpdateEvents = () => {
   const [events, setEvents] = useState([]);
   const [selectedFile, setSelectedFile] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
+  const [goTo, setGoTo] = useState('');
 
   const fileSelectHandler = (file) => {
     setSelectedFile(file);
@@ -49,36 +50,42 @@ const UpdateEvents = () => {
     const spanishTitle = $(`#titleEsp${id}`).val();
     const englishDescr = $(`#description${id}`).val();
     const spanishDescr = $(`#descriptionEsp${id}`).val();
+
     switch (true) {
       case isNaN(dateDiff): //newStart is invalid
         setErrorMessage(<p>Please enter a valide Start Date</p>);
+        setGoTo(`#startDate${id}`);
         openErrorPopup(id);
         break;
       case dateDiff > 0: //end Date is before start date
         setErrorMessage(
           <p>
-            End Date/Time must be later than Start Date/Time (or left blank)
+            End Date/Time must be <i>later than</i> Start Date/Time (or left
+            blank)
           </p>
         );
+        setGoTo(`#endDate${id}`);
         openErrorPopup(id);
         break;
-      case !englishTitle || !spanishTitle:
+      case !englishTitle || !spanishTitle: //a title field is blank
         setErrorMessage(
           <p>
             You must enter a <i>title</i> in English <u>and</u> Spanish
           </p>
         );
+        setGoTo(`#title${id}`);
         openErrorPopup(id);
         break;
-      case !englishDescr || !spanishDescr:
+      case !englishDescr || !spanishDescr: //a description field is blank
         setErrorMessage(
           <p>
             You must enter a <i>description</i> in English <u>and</u> Spanish
           </p>
         );
+        setGoTo(`#description${id}`);
         openErrorPopup(id);
         break;
-      case endStr === '' || newEnd === newStart:
+      case endStr === '' || newEnd === newStart: //end date is not there, ok, but no newEnd
         form.start = new Date(newStart);
         form.end = '';
         prepareForm(id);
@@ -116,7 +123,6 @@ const UpdateEvents = () => {
     form.subtitle = $(`#subtitle${id}`).val();
     form.titleEsp = $(`#titleEsp${id}`).val();
     form.subtitleEsp = $(`#subtitleEsp${id}`).val();
-    $('#thinking').css('display', 'none');
 
     console.log(form);
     submitForm();
@@ -152,7 +158,7 @@ const UpdateEvents = () => {
         {events.map((e, index) => {
           return (
             <Carousel.Item key={`${e.title}${index}`}>
-              <CheckErrors id={e.id} message={errorMessage} />
+              <CheckErrors id={e.id} message={errorMessage} goTo={goTo} />
               <ActionComplete
                 title={e.title}
                 titleEsp={e.titleEsp}

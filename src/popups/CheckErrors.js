@@ -6,8 +6,13 @@ import styles from './Popup.module.scss';
 const CheckErrors = ({ id, message, goTo }) => {
   const closePopup = (id) => {
     $(`#checkErrors${id}`).css('display', 'none');
-    $(`#endDate${id}`).focus();
-    $(window).scrollTop($('.mainInputArea'));
+    $(goTo).focus().select();
+    $('html, body').animate(
+      {
+        scrollTop: $(goTo).offset().top,
+      },
+      500
+    );
   };
 
   return (

@@ -10,12 +10,12 @@ const ActionComplete = ({ title, titleEsp, action }) => {
   return (
     <div className={styles.overlay} id="success">
       <div className={styles.whiteSpace}>
-        <h6>
+        <h3>
           <i>
             {title} ({titleEsp})
           </i>{' '}
           was successfully {action}!
-        </h6>
+        </h3>
 
         <Button variant="secondary" onClick={() => closeMe()}>
           Close
