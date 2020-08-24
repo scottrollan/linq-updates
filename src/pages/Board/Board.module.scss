@@ -36,7 +36,9 @@
 }
 .bio {
   background-color: var(--white-overlay);
+  padding: 10px;
   border-radius: 1rem;
+  box-sizing: content-box;
 }
 .formGroup {
   width: 45%;

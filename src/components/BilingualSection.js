@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import $ from 'jquery';
 import { Form } from 'react-bootstrap';
 import styles from '../pages/Events/Events.module.scss';
 
@@ -23,12 +22,6 @@ const BilingualSection = ({
   const [thisInfo, setThisInfo] = useState(info);
   const [thisInfoEsp, setThisInfoEsp] = useState(infoEsp);
 
-  // const change = (e) => {
-  //   const id = e.target.id;
-  //   const value = e.target.value;
-  //   console.log('id: ', id, 'value: ', value);
-  //   `${id}`(value);
-  // };
   return (
     <div className={styles.bilingual}>
       <div className={styles.oneLine}>

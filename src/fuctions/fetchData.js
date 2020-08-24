@@ -59,6 +59,7 @@ export const fetchBoardData = async () => {
       bioEng: m.bioEng,
       bioEsp: m.bioEsp,
       imageUrl: imageUrl,
+      image: m.memberImage,
       displayOrder: m.displayOrder,
     };
     thisBoard.push(currentMember);

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import $ from 'jquery';
 import styles from './Popup.module.scss';
 
-const ActionComplete = ({ title, titleEsp, action }) => {
+const ActionComplete = ({ what, action }) => {
   const closeMe = () => {
     $('#success').css('display', 'none');
   };
@@ -11,10 +11,7 @@ const ActionComplete = ({ title, titleEsp, action }) => {
     <div className={styles.overlay} id="success">
       <div className={styles.whiteSpace}>
         <h3>
-          <i>
-            {title} ({titleEsp})
-          </i>{' '}
-          was successfully {action}!
+          <i>{what}</i> was successfully {action}!
         </h3>
 
         <Button variant="secondary" onClick={() => closeMe()}>

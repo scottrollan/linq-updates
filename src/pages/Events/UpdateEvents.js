@@ -124,7 +124,6 @@ const UpdateEvents = () => {
     form.titleEsp = $(`#titleEsp${id}`).val();
     form.subtitleEsp = $(`#subtitleEsp${id}`).val();
 
-    console.log(form);
     submitForm();
   };
 
@@ -160,8 +159,7 @@ const UpdateEvents = () => {
             <Carousel.Item key={`${e.title}${index}`}>
               <CheckErrors id={e.id} message={errorMessage} goTo={goTo} />
               <ActionComplete
-                title={e.title}
-                titleEsp={e.titleEsp}
+                what={`${e.title} (${e.titleEsp})`}
                 action="edited"
               />
               <Thinking />

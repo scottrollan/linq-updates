@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 import styles from '../pages/Board/Board.module.scss';
 
 const BioSection = ({
+  id,
   name,
   titleEng,
   titleEsp,
@@ -31,12 +32,13 @@ const BioSection = ({
   const [thisDisplayOrder, setThisDisplayOrder] = useState(displayOrder);
 
   return (
-    <div className={styles.bio}>
+    <div className={styles.bio} id={`bioSection${id}`}>
       <div className={styles.oneLine}>
         <Form.Group className={styles.formGroup}>
           <Form.Label>Name/nombre</Form.Label>
           <Form.Control
             type="text"
+            id={`name${id}`}
             onChange={(e) => setThisName(e.target.value)}
             value={thisName}
           ></Form.Control>
@@ -46,7 +48,8 @@ const BioSection = ({
           <p>{`(there are ${memberNum} total members)`}</p>
           <Form.Control
             type="number"
-            onChange={(e) => setThisDisplayOrder(e.target.value)}
+            id={`displayOrder${id}`}
+            onChange={(e) => setThisDisplayOrder(parseInt(e.target.value))}
             value={thisDisplayOrder}
           ></Form.Control>
         </Form.Group>
@@ -80,6 +83,7 @@ const BioSection = ({
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
+            id={`titleEng${id}`}
             onChange={(e) => setThisTitleEng(e.target.value)}
             value={thisTitleEng}
           ></Form.Control>
@@ -88,6 +92,7 @@ const BioSection = ({
           <Form.Label>Título</Form.Label>
           <Form.Control
             type="text"
+            id={`titleEsp${id}`}
             onChange={(e) => setThisTitleEsp(e.target.value)}
             value={thisTitleEsp}
           ></Form.Control>
@@ -99,6 +104,7 @@ const BioSection = ({
           <Form.Control
             as="textarea"
             rows="10"
+            id={`bioEng${id}`}
             onChange={(e) => setThisBioEng(e.target.value)}
             value={thisBioEng}
           ></Form.Control>
@@ -108,6 +114,7 @@ const BioSection = ({
           <Form.Control
             as="textarea"
             rows={10}
+            id={`bioEsp${id}`}
             onChange={(e) => setThisBioEsp(e.target.value)}
             value={thisBioEsp}
           ></Form.Control>
