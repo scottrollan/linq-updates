@@ -3,12 +3,12 @@ import { Button } from 'react-bootstrap';
 import $ from 'jquery';
 import styles from './Popup.module.scss';
 
-const ActionComplete = ({ what, action }) => {
+const ActionComplete = ({ what, action, id }) => {
   const closeMe = () => {
-    $('#success').css('display', 'none');
+    $(`#${id}`).css('display', 'none');
   };
   return (
-    <div className={styles.overlay} id="success">
+    <div className={styles.overlay} id={id}>
       <div className={styles.whiteSpace}>
         <h3>
           <i>{what}</i> was successfully {action}!

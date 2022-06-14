@@ -1,0 +1,15 @@
+@import '../../styles/custom-properties.scss';
+
+.jobs {
+  width: 100%;
+  padding: 2rem;
+}
+.editor {
+  background-color: var(--white);
+  color: var(--black);
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  min-height: 50vh;
+  text-align: left;
+}

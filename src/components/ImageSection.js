@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Client } from '../api/client';
 import $ from 'jquery';
 import { Form, Button } from 'react-bootstrap';
-import styles from '../pages/Events/Events.module.scss';
+import styles from '../pages/Board/Board.module.scss';
 
 const ImageSection = ({
   id,

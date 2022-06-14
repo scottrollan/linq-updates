@@ -21,6 +21,7 @@ const UpdateBoard = () => {
   };
 
   const checkErrors = (id) => {
+    console.log(id);
     switch (true) {
       case !$(`#name${id}`).val():
         setErrorMessage(<p>You must enter a name.</p>);
@@ -43,7 +44,6 @@ const UpdateBoard = () => {
         openErrorPopup(id);
         break;
       default:
-        $('#thinking').css('display', 'flex');
         prepareAndSubmitForm(id);
         break;
     }
@@ -54,6 +54,7 @@ const UpdateBoard = () => {
   };
 
   const prepareAndSubmitForm = async (id) => {
+    $(`#thinking${id}`).css('display', 'flex');
     let form = {};
     const preparedImageObj = {
       _type: 'image',
@@ -81,7 +82,6 @@ const UpdateBoard = () => {
       const pushThis = normalizeBlock(partialBlock);
       bioEspArray.push(pushThis);
     });
-    console.log(bioEngArray, bioEspArray);
 
     form = {
       _id: id,
@@ -103,17 +103,16 @@ const UpdateBoard = () => {
 
     const updatedAt = Date.parse(response._updatedAt);
     if (updatedAt >= preUpdate) {
-      $('#thinking').css('display', 'none');
-      $('#success').css('display', 'flex');
+      $(`#thinking${id}`).css('display', 'none');
+      $(`#success${id}`).css('display', 'flex');
     }
   };
 
-  const fetchBoard = async () => {
-    const boardArray = await fetchBoardData();
-    setBoard(board.concat(boardArray));
-  };
-
   useEffect(() => {
+    const fetchBoard = async () => {
+      const boardArray = await fetchBoardData();
+      setBoard(board.concat(boardArray));
+    };
     fetchBoard();
   }, []);
 
@@ -132,8 +131,9 @@ const UpdateBoard = () => {
                 what={`${e.name} (${e.titleEsp})`}
                 titleEsp={e.titleEsp}
                 action="edited"
-              />{' '}
-              <Thinking />
+                id={`success${e.id}`}
+              />
+              <Thinking id={`thinking${e.id}`} />
               <div className={styles.mainInputArea}>
                 <h2>{e.name}</h2>
                 <Form id={`mainInputArea${e.id}`}>

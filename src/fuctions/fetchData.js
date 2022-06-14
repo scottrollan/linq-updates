@@ -11,6 +11,8 @@ export const fetchEventsData = async () => {
   let theseEvents = [];
   let futureEvents = [];
   const losEventos = await Client.fetch("*[_type == 'event'] | order(start)");
+  console.log(losEventos);
+  alert('check console for return value');
   losEventos.forEach((v) => {
     const imageObj = v.image;
     const imageUrl = urlFor(imageObj).url().toString();
