@@ -10,7 +10,7 @@ const Landing = () => {
         <Link to="/UpdateBoard" className={styles.navButton}>
           Board Members
         </Link>
-        <Link to="/Jobs" className={styles.navButton}>
+        <Link to="/CreateEditJobs" className={styles.navButton}>
           Jobs
         </Link>
         {/* <Link to="/UpdateServices" className={styles.navButton}>

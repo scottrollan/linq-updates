@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './pages/Landing/Landing';
 import UpdateBoard from './pages/Board/UpdateBoard';
-import Jobs from './pages/Jobs/Jobs';
+import CreateEditJobs from './pages/Jobs/CreateEditJobs';
 import UpdateServices from './pages/Services/UpdateServices';
+import UpdateJobs from './pages/Jobs/UpdateJobs';
 import logo from './assets/LogoShape.png';
 import text from './assets/Latino LinQ Logo Text.png';
 import styles from './App.module.scss';
@@ -25,8 +26,13 @@ function App() {
             exact
             component={UpdateServices}
           ></Route>
+          <Route path="/UpdateJobs" exact component={UpdateJobs}></Route>
           <Route path="/UpdateBoard" exact component={UpdateBoard}></Route>
-          <Route path="/Jobs" exact component={Jobs}></Route>
+          <Route
+            path="/CreateEditJobs"
+            exact
+            component={CreateEditJobs}
+          ></Route>
         </Switch>
       </Router>
     </div>

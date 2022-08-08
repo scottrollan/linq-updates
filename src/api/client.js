@@ -18,3 +18,6 @@ export const fetchBoard = Client.fetch(
 export const fetchServices = Client.fetch(
   "*[_type == 'service'] | order(displayOrder)"
 );
+export const fetchJobs = Client.fetch(
+  "*[_type == 'job'] | order(displayOrder)"
+);

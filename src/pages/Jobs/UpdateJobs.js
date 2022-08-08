@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { fetchJobsData } from '../../fuctions/fetchData';
 import RichTextEditor from '../../components/RichTextEditor';
-import styles from './Jobs.module.scss';
 import { EditorState, convertToRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
+import styles from './Jobs.module.scss';
 
-export default function Jobs() {
+export default function UpdateJobs() {
   const [jobTitle, setJobTitle] = useState('');
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()

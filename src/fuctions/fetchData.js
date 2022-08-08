@@ -68,3 +68,21 @@ export const fetchBoardData = async () => {
   });
   return thisBoard;
 };
+
+export const fetchJobsData = async () => {
+  let theseJobs = [];
+  const losPuestos = await Client.fetch(
+    "*[_type == 'job'] | order(displayOrder)"
+  );
+  losPuestos.forEach((p) => {
+    let currentJob = {
+      id: p._id,
+      jobTitle: p.jobTitle,
+      jobDescription: p.jobDescription,
+      active: p.active,
+      displayOrder: p.displayOrder,
+    };
+    theseJobs.push(currentJob);
+  });
+  return theseJobs;
+};
