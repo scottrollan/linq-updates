@@ -1,6 +1,14 @@
 import React, { useRef } from 'react';
 import { Editor, getDefaultKeyBinding, RichUtils } from 'draft-js';
 import './RichUtils.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faListUl,
+  faListOl,
+  faBold,
+  faItalic,
+  faUnderline,
+} from '@fortawesome/free-solid-svg-icons';
 import '../../node_modules/draft-js/dist/Draft.css';
 
 export default function RichTextEditor({
@@ -63,7 +71,15 @@ export default function RichTextEditor({
         editorState={editorState}
         onToggle={(inlineStyle) => toggleInlineStyle(inlineStyle)}
       />
-      <div className={className} onClick={() => focus()}>
+      <div
+        className={className}
+        onClick={() => focus()}
+        style={{
+          overflowY: 'scroll',
+          overflowX: 'hidden',
+          maxHeight: '80vh',
+        }}
+      >
         <Editor
           blockStyleFn={getBlockStyle}
           customStyleMap={styleMap}
@@ -71,7 +87,7 @@ export default function RichTextEditor({
           handleKeyCommand={handleKeyCommand}
           keyBindingFn={mapKeyToEditorCommand}
           onChange={setEditorState}
-          placeholder="Tell a story..."
+          placeholder="Enter job details..."
           ref={editor}
           spellCheck={true}
         />
@@ -95,6 +111,12 @@ function getBlockStyle(block) {
   switch (block.getType()) {
     case 'blockquote':
       return 'RichEditor-blockquote';
+    case 'left':
+      return 'align-left';
+    case 'center':
+      return 'align-center';
+    case 'right':
+      return 'align-right';
     default:
       return null;
   }
@@ -124,15 +146,24 @@ class StyleButton extends React.Component {
 }
 
 const BLOCK_TYPES = [
-  { label: 'Header1', style: 'header-one' },
-  { label: 'Header2', style: 'header-two' },
-  { label: 'Header3', style: 'header-three' },
-  { label: 'Header4', style: 'header-four' },
-  { label: 'Header5', style: 'header-five' },
-  { label: 'Header6', style: 'header-six' },
-  // { label: 'Blockquote', style: 'blockquote' },
-  { label: 'Unordered List', style: 'unordered-list-item' },
-  { label: 'Ordered List', style: 'ordered-list-item' },
+  // { label: 'Header1', icon: '', style: 'header-one' },
+  // { label: 'Header2', icon: '', style: 'header-two' },
+  // { label: 'Header3', icon: '', style: 'header-three' },
+  // { label: <h4>Header</h4>, icon: '', style: 'header-four' },
+  { label: <h5>Sub-Header</h5>, icon: '', style: 'header-five' },
+  // { label: 'Header6', icon: '', style: 'header-six' },
+  // { label: 'Blockquote', icon: '', style: 'blockquote' },
+  {
+    label: 'Bulleted List',
+    icon: <FontAwesomeIcon icon={faListUl} />,
+    style: 'unordered-list-item',
+  },
+  {
+    label: 'Numbered List',
+    icon: <FontAwesomeIcon icon={faListOl} />,
+    style: 'ordered-list-item',
+  },
+
   // { label: 'Code Block', style: 'code-block' },
 ];
 
@@ -149,9 +180,9 @@ const BlockStyleControls = (props, { editorState }) => {
     <div className="RichEditor-controls">
       {BLOCK_TYPES.map((type) => (
         <StyleButton
-          key={type.label}
+          key={JSON.stringify(type.style)}
           active={type.style === blockType}
-          label={type.label}
+          label={type.icon ? type.icon : type.label}
           onToggle={() => props.onToggle(`${type.style}`)}
           style={type.style}
         />
@@ -161,9 +192,17 @@ const BlockStyleControls = (props, { editorState }) => {
 };
 
 var INLINE_STYLES = [
-  { label: 'Bold', style: 'BOLD' },
-  { label: 'Italic', style: 'ITALIC' },
-  { label: 'Underline', style: 'UNDERLINE' },
+  { label: 'Bold', icon: <FontAwesomeIcon icon={faBold} />, style: 'BOLD' },
+  {
+    label: 'Italic',
+    icon: <FontAwesomeIcon icon={faItalic} />,
+    style: 'ITALIC',
+  },
+  {
+    label: 'Underline',
+    icon: <FontAwesomeIcon icon={faUnderline} />,
+    style: 'UNDERLINE',
+  },
   // { label: 'Monospace', style: 'CODE' },
 ];
 
@@ -176,7 +215,7 @@ const InlineStyleControls = (props) => {
         <StyleButton
           key={type.label}
           active={currentStyle.has(type.style)}
-          label={type.label}
+          label={type.icon ? type.icon : type.label}
           onToggle={() => props.onToggle(`${type.style}`)}
           style={type.style}
         />
