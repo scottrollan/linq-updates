@@ -3,20 +3,22 @@ import UpdateJobs from './UpdateJobs';
 import { fetchJobsData } from '../../fuctions/fetchData';
 import { Button } from 'react-bootstrap';
 import { createRandomString } from '../../fuctions/createRandomString';
-import { Redirect, useHistory } from 'react-router-dom';
 import styles from './Jobs.module.scss';
 
 export default function CreateEditJobs() {
   const [allJobs, setAllJobs] = useState([]);
-  const [editJob, setEditJob] = useState({});
-  const [redirect, setRedirect] = useState(null);
-  let history = useHistory();
+  const [selectedJob, setSelectedJob] = useState({
+    id: '',
+    jobTitle: '',
+    jobDescription: '',
+    active: true,
+    displayOrder: 99,
+  });
+  const [showEditPage, setShowEditPage] = useState(false);
 
   const openJob = (jobObj) => {
-    console.log(jobObj);
-    setEditJob(jobObj);
-    history.push('/CreateEditJobs');
-    setRedirect('/UpdateJobs');
+    setSelectedJob(jobObj);
+    setShowEditPage(true);
   };
 
   const createNewJob = () => {
@@ -26,11 +28,13 @@ export default function CreateEditJobs() {
       12
     )}`;
     const newJob = {
+      id: newId,
       jobTitle: '',
       jobDescription: '',
       active: true,
-      id: newId,
+      displayOrder: 99,
     };
+    setSelectedJob(newJob);
     openJob(newJob);
   };
 
@@ -38,20 +42,15 @@ export default function CreateEditJobs() {
     const fetchJobs = async () => {
       const jobsArray = await fetchJobsData();
       setAllJobs(allJobs.concat(jobsArray));
-      console.log(jobsArray);
     };
     fetchJobs();
   }, []);
 
-  if (redirect) {
-    return <Redirect to={redirect} />;
-  }
-
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <h5>Latino LinQ Jobs</h5>
       <div
-      // style={{ display: showEditPage ? 'none' : 'initial', margin: '2em 0' }}
+        style={{ display: showEditPage ? 'none' : 'initial', margin: '2em 0' }}
       >
         <Button onClick={() => createNewJob()}>Create New Job Posting</Button>
         <p style={{ fontSize: 'smaller', marginTop: '2em' }}>
@@ -78,9 +77,13 @@ export default function CreateEditJobs() {
           })}
         </div>
       </div>
-      {/* <div style={{ display: showEditPage ? 'inherit' : 'none' }}>
-        <UpdateJobs setShowEditPage={setShowEditPage} editJob={editJob} />
-      </div> */}
+      <div style={{ display: showEditPage ? 'inherit' : 'none' }}>
+        <UpdateJobs
+          setShowEditPage={setShowEditPage}
+          selectedJob={selectedJob}
+          setSelectedJob={setSelectedJob}
+        />
+      </div>
     </div>
   );
 }
