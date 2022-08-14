@@ -13,9 +13,6 @@ const Landing = () => {
         <Link to="/CreateEditJobs" className={styles.navButton}>
           Jobs
         </Link>
-        {/* <Link to="/UpdateServices" className={styles.navButton}>
-          Direct Services
-        </Link> */}
       </div>
     </div>
   );
