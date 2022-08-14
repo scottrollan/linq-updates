@@ -1,14 +1,6 @@
 import React, { useRef } from 'react';
 import { Editor, getDefaultKeyBinding, RichUtils } from 'draft-js';
 import './RichUtils.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faListUl,
-  faListOl,
-  faBold,
-  faItalic,
-  faUnderline,
-} from '@fortawesome/free-solid-svg-icons';
 import '../../node_modules/draft-js/dist/Draft.css';
 
 export default function RichTextEditor({
@@ -153,14 +145,19 @@ const BLOCK_TYPES = [
   { label: <h5>Sub-Header</h5>, icon: '', style: 'header-five' },
   // { label: 'Header6', icon: '', style: 'header-six' },
   // { label: 'Blockquote', icon: '', style: 'blockquote' },
+  // {
+  //   label: 'Center',
+  //   icon: <FontAwesomeIcon icon={faAlignCenter} />,
+  //   style: 'align: center',
+  // },
   {
     label: 'Bulleted List',
-    icon: <FontAwesomeIcon icon={faListUl} />,
+    icon: <i class="fal fa-list-ul"></i>,
     style: 'unordered-list-item',
   },
   {
     label: 'Numbered List',
-    icon: <FontAwesomeIcon icon={faListOl} />,
+    icon: <i class="fal fa-list-ol"></i>,
     style: 'ordered-list-item',
   },
 
@@ -192,15 +189,15 @@ const BlockStyleControls = (props, { editorState }) => {
 };
 
 var INLINE_STYLES = [
-  { label: 'Bold', icon: <FontAwesomeIcon icon={faBold} />, style: 'BOLD' },
+  { label: 'Bold', icon: <i class="fal fa-bold"></i>, style: 'BOLD' },
   {
     label: 'Italic',
-    icon: <FontAwesomeIcon icon={faItalic} />,
+    icon: <i class="fal fa-italic"></i>,
     style: 'ITALIC',
   },
   {
     label: 'Underline',
-    icon: <FontAwesomeIcon icon={faUnderline} />,
+    icon: <i class="fal fa-underline"></i>,
     style: 'UNDERLINE',
   },
   // { label: 'Monospace', style: 'CODE' },

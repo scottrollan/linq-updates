@@ -7,44 +7,6 @@ const urlFor = (source) => {
   return builder.image(source);
 };
 
-export const fetchEventsData = async () => {
-  let theseEvents = [];
-  let futureEvents = [];
-  const losEventos = await Client.fetch("*[_type == 'event'] | order(start)");
-  console.log(losEventos);
-  alert('check console for return value');
-  losEventos.forEach((v) => {
-    const imageObj = v.image;
-    const imageUrl = urlFor(imageObj).url().toString();
-    let currentEvent = {
-      id: v._id,
-      start: v.start,
-      end: v.end,
-      allDay: v.allDay,
-      title: v.title,
-      titleEsp: v.titleEsp,
-      subtitle: v.subtitle,
-      subtitleEsp: v.subtitleEsp,
-      info: v.importantInfo,
-      infoEsp: v.importantInfoEsp,
-      description: v.description,
-      descriptionEsp: v.descriptionEsp,
-      link1Description: v.link1Description,
-      link1: v.link1,
-      link2Description: v.link2Description,
-      link2: v.link2,
-      imageUrl: imageUrl,
-      image: v.image,
-    };
-    theseEvents.push(currentEvent);
-    const now = new Date(Date.now());
-    const today = now.toISOString();
-    futureEvents = theseEvents.filter((ev) => ev.start >= today);
-  });
-  return futureEvents;
-  // setEvents(events.concat(futureEvents));
-};
-
 export const fetchBoardData = async () => {
   let thisBoard = [];
   const losMiembros = await Client.fetch(
