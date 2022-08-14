@@ -152,12 +152,12 @@ const BLOCK_TYPES = [
   // },
   {
     label: 'Bulleted List',
-    icon: <i class="fal fa-list-ul"></i>,
+    icon: <i className="fal fa-list-ul"></i>,
     style: 'unordered-list-item',
   },
   {
     label: 'Numbered List',
-    icon: <i class="fal fa-list-ol"></i>,
+    icon: <i className="fal fa-list-ol"></i>,
     style: 'ordered-list-item',
   },
 
@@ -189,15 +189,15 @@ const BlockStyleControls = (props, { editorState }) => {
 };
 
 var INLINE_STYLES = [
-  { label: 'Bold', icon: <i class="fal fa-bold"></i>, style: 'BOLD' },
+  { label: 'Bold', icon: <i className="fal fa-bold"></i>, style: 'BOLD' },
   {
     label: 'Italic',
-    icon: <i class="fal fa-italic"></i>,
+    icon: <i className="fal fa-italic"></i>,
     style: 'ITALIC',
   },
   {
     label: 'Underline',
-    icon: <i class="fal fa-underline"></i>,
+    icon: <i className="fal fa-underline"></i>,
     style: 'UNDERLINE',
   },
   // { label: 'Monospace', style: 'CODE' },
