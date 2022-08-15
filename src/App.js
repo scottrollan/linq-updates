@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing/Landing';
 import UpdateBoard from './pages/Board/UpdateBoard';
 import CreateEditJobs from './pages/Jobs/CreateEditJobs';
@@ -19,7 +19,7 @@ function App() {
       <h2>Update Pages</h2>
       <h3>on the Latino Linq Website</h3>
       <Router>
-        <Switch>
+        <Routes>
           <Route path="/" exact component={Landing}></Route>
           <Route
             path="/UpdateServices"
@@ -33,7 +33,7 @@ function App() {
             exact
             component={CreateEditJobs}
           ></Route>
-        </Switch>
+        </Routes>
       </Router>
     </div>
   );
