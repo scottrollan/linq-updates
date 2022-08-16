@@ -7,10 +7,11 @@ const Landing = () => {
     <div className={styles.landing}>
       <h4>Edit, Create New or Delete...</h4>
       <div className={styles.buttonDiv}>
-        <Link to="/UpdateBoard" className={styles.navButton}>
+        <Link to="UpdateBoard" className={styles.navButton}>
           Board Members
         </Link>
-        <Link to="/CreateEditJobs" className={styles.navButton}>
+
+        <Link to="CreateEditJobs" className={styles.navButton}>
           Jobs
         </Link>
       </div>
