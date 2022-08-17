@@ -5,6 +5,7 @@ export const Client = sanityClient({
   projectId: 'erqpw4nh',
   dataset: 'production',
   token: SANITY_KEY,
+  apiVersion: '2020-08-24',
   useCdn: false, // `false` if you want to ensure fresh data
   ignoreBrowserTokenWarning: true,
 });
